@@ -1,0 +1,16 @@
+{
+    "java_version": "1.8",
+    "maven_version": "3.9.5",
+    "directories": [
+      {"name": "common-parent-pom", "type": "maven"},
+      {"name": "dw-library-log-mapper", "type": "maven"},
+      {"name": "dw-library-error-mapper", "type": "maven"},
+      {"name": "common-error-handling", "type": "maven"},
+      {"name": "health-check-app", "type": "maven"},
+      {"name": "mule-application-template", "type": "maven"},
+      {"name": "api-directory", "type": "raml-api"},
+      {"name": "exchange-directory", "type": "raml-api"},
+      {"name": "raml-fragment-directory", "type": "raml-fragment"}
+    ]
+  }
+  
