@@ -10,12 +10,14 @@ These are the related projects used:
 * [dw-library-log-mapper](https://github.com/mulesoft-consulting/dw-library-log-mapper)
 * [health-check-app](https://github.com/mulesoft-consulting/health-check-app)
 * [dw-library-error-mapper](https://github.com/mulesoft-consulting/dw-library-error-mapper)
+*  [mule-application-template](https://github.com/mulesoft-consulting/dw-library-error-mapper)
+
 
 ## Deployment Script for Mule and RAML Projects
 
 ### Overview
 
-A tipical usage scenario for these templates is to branch create branches for a specific usage or customer on each of them and upload each of them to Anypoint Exchange.
+A tipical usage scenario for these templates is to create branches for a specific usage or customer on each of them and upload them to Anypoint Exchange.
 The **deploy_script.sh**  is designed to streamline the deployment process for Mule and RAML templates. It automates tasks such as creating local git branches, deploying Maven projects, and handling specific tasks for different project types (Maven, RAML API, RAML Fragment).
 
 ### Prerequisites
