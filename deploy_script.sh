@@ -33,6 +33,18 @@ check_maven_version() {
   log "Maven version is $version."
 }
 
+# Function to check anypoint cli version
+check_anypoint_cli_version() {
+  log "Checking anypoint cli version..."
+  local version=$(anypoint-cli-v4 --version | awk -F'/' '{print $2}')
+  if [[ "$version" < "$anypoint_cli_version" ]]; then
+    log "Error: Maven version $anypoint_cli_version or higher is required."
+    exit 1
+  fi
+  log "Anypoint cli version is $version."
+}
+
+
 # Function to replace GROUP_ID placeholder in pom.xml
 replace_group_id() {
   local directory="$1"
@@ -116,13 +128,13 @@ process_directories_from_json() {
         replace_group_id_additional "$name" "$organization_id"
         rename_exchange_modules "$name" "$organization_id"
         process_directory "$name" "$customer_name" "$control_plane"
-        designcenter:project:create -type raml "$name"
+        anypoint-cli-v4 designcenter:project:create --client_id $client_application_id --client_secret $client_application_secret --organization $organization_id  --type raml "$name" 
         ;;
       "raml-fragment")
         replace_group_id_additional "$name" "$organization_id"
         rename_exchange_modules "$name" "$organization_id"
         process_directory "$name" "$customer_name" "$control_plane"
-        designcenter:project:create -type raml_fragment "$name"
+        anypoint-cli-v4 designcenter:project:create --client_id $client_application_id --client_secret $client_application_secret --organization $organization_id --type raml_fragment "$name" 
         ;;
       *)
         log "Error: Unsupported directory type."
@@ -135,14 +147,29 @@ process_directories_from_json() {
 }
 
 # Main script starts here
+control_plane=$1
+customer_name=$2
+organization_id=$3
+client_application_id=$4
+client_application_secret=$5
+
+#check if jq is available in the environment
+which jq
+if [[ $? != 0 ]]; then
+  log "jq utility is not installed."
+  exit 1
+fi
 
 # Read Java and Maven versions from JSON file
-java_version=$(jq -r '.java_version' "directories.json")
-maven_version=$(jq -r '.maven_version' "directories.json")
+java_version=$(jq -r '.java_version' "deploy_config.json")
+maven_version=$(jq -r '.maven_version' "deploy_config.json")
+anypoint_cli_version=$(jq -r '.anypoint_cli_version' "deploy_config.json")
 
 # Check Java and Maven versions
+check_anypoint_cli_version
 check_java_version
 check_maven_version
 
+
 # Process directories from JSON file
-process_directories_from_json "directories.json"
+process_directories_from_json "deploy_config.json"

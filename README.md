@@ -38,12 +38,14 @@ Before using the script, ensure that the following prerequisites are met:
     git pull --recurse-submodules
    ```
 
-2. (Optional) Configure the file (`directories.json`) with the project information:
+2. (Optional) Configure the file (`deploy_config.json`) with the project information:
 
    ```json
    {
      "java_version": "1.8",
      "maven_version": "3.9.5",
+     "anypoint_cli_version": "4.0.0",
+     "npm_version": "1.20.0",
      "directories": [
        {"name": "common-parent-pom", "type": "maven"},
        {"name": "dw-library-log-mapper", "type": "maven"},
@@ -91,7 +93,7 @@ Before using the script, ensure that the following prerequisites are met:
 
 ### Customization
 
-- **Project Configuration:** Update the `directories.json` file to include your specific project names and types.
+- **Project Configuration:** Update the `deploy_config.json` file to include your specific project names and types.
 
 - **Command Customization:** Modify the script to include additional commands or customize existing commands based on your project requirements.
 
