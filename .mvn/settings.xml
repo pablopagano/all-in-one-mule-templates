@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <servers>
+    <server>
+      <username>${env.MULE_NEXUS_USER}</username>
+      <password>{env.MULE_NEXUS_PASSWORD}</password>
+      <id>MuleRepository</id>
+    </server>
+    <server>
+      <username>~~~Client~~~</username>
+      <password>${env.MULE_CONNECTED_APP_CLIENT_ID}~?~${env.MULE_CONNECTED_APP_CLIENT_SECRET}</password>
+      <id>anypoint-exchange-v3</id>
+    </server>
+  </servers>
+  <profiles>
+    <profile>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <repositories>
+        <repository>
+          <releases />
+          <snapshots />
+          <id>MuleRepository</id>
+          <name>MuleRepository</name>
+          <url>https://repository.mulesoft.org/nexus-ee/content/repositories/releases-ee/</url>
+        </repository>
+      </repositories>
+      <id>mule-dev</id>
+    </profile>
+  </profiles>
+</settings>

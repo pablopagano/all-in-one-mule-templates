@@ -1,6 +1,7 @@
 {
     "java_version": "1.8",
     "maven_version": "3.9.5",
+    "maven_wrapper": true,
     "anypoint_cli_version": "1.0.0",
     "directories": [
       {"name": "common-parent-pom", "type": "maven"},

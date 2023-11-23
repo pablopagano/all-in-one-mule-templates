@@ -25,7 +25,7 @@ check_java_version() {
 # Function to check Maven version
 check_maven_version() {
   log "Checking Maven version..."
-  local version=$(mvn -v | awk -F ' ' '/Apache Maven/ {print $3}')
+  local version=$($mvn_cmd -v | awk -F ' ' '/Apache Maven/ {print $3}')
   if [[ "$version" < "$maven_version" ]]; then
     log "Error: Maven version $maven_version or higher is required."
     exit 1
@@ -104,9 +104,9 @@ deploy_with_maven() {
   local directory="$1"
   local control_plane="$2"
   if [[ "$control_plane" == "eu" ]]; then
-    mvn clean deploy
+    $mvn_cmd clean deploy
   else
-    mvn clean deploy -Pcp_us
+    $mvn_cmd clean deploy -Pcp_us
   fi
 }
 
@@ -161,9 +161,17 @@ if [[ $? != 0 ]]; then
 fi
 
 # Read Java and Maven versions from JSON file
+
 java_version=$(jq -r '.java_version' "deploy_config.json")
 maven_version=$(jq -r '.maven_version' "deploy_config.json")
+maven_wrapper=$(jq -r '.maven_wrapper' "deploy_config.json")
 anypoint_cli_version=$(jq -r '.anypoint_cli_version' "deploy_config.json")
+
+if [[ "$maven_wrapper" != "true" ]]; then
+   $mvn_cmd="./mvnw"
+  else
+   $mvn_cmd="mvn"
+  fi
 
 # Check Java and Maven versions
 check_anypoint_cli_version
