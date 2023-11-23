@@ -38,29 +38,7 @@ Before using the script, ensure that the following prerequisites are met:
     git pull --recurse-submodules
    ```
 
-2. (Optional) Configure the file (`deploy_config.json`) with the project information:
-
-   ```json
-   {
-     "java_version": "1.8",
-     "maven_version": "3.9.5",
-     "anypoint_cli_version": "4.0.0",
-     "npm_version": "1.20.0",
-     "directories": [
-       {"name": "common-parent-pom", "type": "maven"},
-       {"name": "dw-library-log-mapper", "type": "maven"},
-       {"name": "dw-library-error-mapper", "type": "maven"},
-       {"name": "common-error-handling", "type": "maven"},
-       {"name": "health-check-app", "type": "maven"},
-       {"name": "mule-application-template", "type": "maven"},
-       {"name": "api-directory", "type": "raml-api"},
-       {"name": "exchange-directory", "type": "raml-api"},
-       {"name": "raml-fragment-directory", "type": "raml-fragment"}
-     ]
-   }
-   ```
-
-   Update the values in the configuration file according to your project structure.
+2. (Optional) Configure the file (`deploy_config.json`) according to your project structure.
 
 3. Execute the deployment script:
 
