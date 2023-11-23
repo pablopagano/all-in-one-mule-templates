@@ -24,11 +24,11 @@ The **deploy_script.sh**  is designed to streamline the deployment process for M
 
 Before using the script, ensure that the following prerequisites are met:
 
-- **Java Installation:** Java version 1.8 or higher is required.
-- **Maven Installation:** Maven version 3.9.5 or higher is required.
-- **Git:** Git should be installed on the system.
-- **bash:** bash should be installed on your system
-- **jq:** jq utility must be installed on your system
+- **Java:** version *1.8* or higher is required.
+- **Maven:** version *3.9.5* or higher is required.
+- **Git:**  should be installed on the system.
+- **bash:** should be installed on your system
+- **jq:**   utility must be installed on your system
 
 ### Usage
 
