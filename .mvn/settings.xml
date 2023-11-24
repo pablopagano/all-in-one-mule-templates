@@ -20,6 +20,11 @@
       </activation>
       <repositories>
         <repository>
+          <id>anypoint-exchange-v3</id>
+          <name>Exchange3 Repository</name>
+          <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/GROUP_ID/maven</url>
+        </repository>
+        <repository>
           <releases />
           <snapshots />
           <id>MuleRepository</id>

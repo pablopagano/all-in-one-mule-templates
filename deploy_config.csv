@@ -1,0 +1,8 @@
+common-parent-pom,maven
+dw-library-log-mapper,maven
+common-error-handling,maven
+health-check-app,maven
+mule-application-template,maven
+common-traits-lib,raml-fragment
+design-api-template,raml-api
+  
