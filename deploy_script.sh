@@ -167,9 +167,13 @@ deploy_with_maven() {
 process_directories_from_json() {
   local csv_file="$1"
   log "Reading directories from $csv_file..."
-
+  local header=0
   while IFS=, read -r name type template import; do
-   if [[ "$import" == "true" ]]; then
+      if [[ "$header" == 1 ]]; then
+      header=0
+      continue
+      fi
+     if [[ "$import" == "true" ]]; then
       log "Processing directory $name of type: $type..."
       case "$type" in
         "maven")
