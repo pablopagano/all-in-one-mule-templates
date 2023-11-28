@@ -4,8 +4,13 @@
   <servers>
     <server>
       <username>${env.MULE_NEXUS_USER}</username>
-      <password>{env.MULE_NEXUS_PASSWORD}</password>
+      <password>${env.MULE_NEXUS_PASSWORD}</password>
       <id>MuleRepository</id>
+    </server>
+    <server>
+      <username>${env.MULE_NEXUS_USER}</username>
+      <password>${env.MULE_NEXUS_PASSWORD}</password>
+      <id>mule-ee-nexus-releases</id>
     </server>
     <server>
       <username>~~~Client~~~</username>
@@ -14,25 +19,62 @@
     </server>
   </servers>
   <profiles>
-    <profile>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <repositories>
-        <repository>
-          <id>anypoint-exchange-v3</id>
-          <name>Exchange3 Repository</name>
-          <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/GROUP_ID/maven</url>
-        </repository>
-        <repository>
-          <releases />
-          <snapshots />
-          <id>MuleRepository</id>
-          <name>MuleRepository</name>
-          <url>https://repository.mulesoft.org/nexus-ee/content/repositories/releases-ee/</url>
-        </repository>
-      </repositories>
-      <id>mule-dev</id>
-    </profile>
-  </profiles>
+      <profile>
+          <activation>
+            <activeByDefault>true</activeByDefault>
+          </activation>
+          <repositories>
+            <repository>
+              <id>anypoint-exchange-v3</id>
+              <name>Exchange3 Repository</name>
+              <url>https://maven.eu1.anypoint.mulesoft.com/api/v3/organizations/${env.MULE_ORG_ID}/maven</url>
+            </repository>
+            <repository>
+              <releases />
+              <snapshots />
+              <id>MuleRepository</id>
+              <name>MuleRepository</name>
+              <url>https://repository.mulesoft.org/nexus-ee/content/repositories/releases-ee/</url>
+            </repository>
+            <repository>
+              <id>anypoint-exchange-v2</id>
+              <name>Anypoint Exchange</name>
+              <url>https://maven.anypoint.mulesoft.com/api/v2/maven</url>
+            </repository>
+            <repository>
+              <id>mulesoft-releases</id>
+              <name>MuleSoft Releases Repository</name>
+              <url>https://repository.mulesoft.org/releases/</url>
+            </repository>
+          </repositories>
+          <id>cp_eu</id>
+        </profile>
+        <profile>
+          <repositories>
+            <repository>
+              <id>anypoint-exchange-v3</id>
+              <name>Exchange3 Repository</name>
+              <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/${env.MULE_ORG_ID}/maven</url>
+            </repository>
+            <repository>
+              <releases />
+              <snapshots />
+              <id>MuleRepository</id>
+              <name>MuleRepository</name>
+              <url>https://repository.mulesoft.org/nexus-ee/content/repositories/releases-ee/</url>
+            </repository>
+            <repository>
+              <id>anypoint-exchange-v2</id>
+              <name>Anypoint Exchange</name>
+              <url>https://maven.anypoint.mulesoft.com/api/v2/maven</url>
+            </repository>
+            <repository>
+              <id>mulesoft-releases</id>
+              <name>MuleSoft Releases Repository</name>
+              <url>https://repository.mulesoft.org/releases/</url>
+            </repository>
+          </repositories>
+          <id>cp_us</id>
+        </profile>
+      </profiles>
 </settings>

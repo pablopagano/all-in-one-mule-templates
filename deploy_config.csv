@@ -1,8 +1,9 @@
-common-parent-pom,maven
-dw-library-log-mapper,maven
-common-error-handling,maven
-health-check-app,maven
-mule-application-template,maven
-common-traits-lib,raml-fragment
-design-api-template,raml-api
+common-parent-pom,maven,false,false
+dw-library-log-mapper,maven,false,false
+dw-library-error-mapper,maven,false,false
+common-error-handling,maven,false,false
+health-check-app,maven,false,false
+common-traits-lib,raml-fragment,false,false
+design-api-template,raml,false,true
+mule-application-template,maven,true,true
   
