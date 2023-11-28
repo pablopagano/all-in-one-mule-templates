@@ -1,5 +1,19 @@
 # all-in-one-mule-templates
----
+
+
+- [all-in-one-mule-templates](#all-in-one-mule-templates)
+  - [Templates](#templates)
+  - [Deployment Script for Mule and RAML Projects](#deployment-script-for-mule-and-raml-projects)
+    - [Overview](#overview)
+    - [Prerequisites](#prerequisites)
+    - [Usage](#usage)
+    - [Script Features](#script-features)
+    - [Customization](#customization)
+  - [Authors](#authors)
+
+
+
+## Templates 
 This repository contains all the templates projects as a form of  [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) to facilitate the managment of the entire set.
 
 These are the related projects used:
@@ -24,13 +38,27 @@ The **deploy_script.sh**  is designed to streamline the deployment process for M
 
 Before using the script, ensure that the following prerequisites are met:
 
-- **Java:** version *1.8* or higher is required.
-- **Maven:** version *3.9.5* or higher is required.
+- **Bash:** should be present on your system
+- **Maven:** version *3.9* or higher is required.
 - **Git:**  should be installed on the system.
-- **bash:** should be installed on your system
-- **jq:**   utility must be installed on your system
+- **Java:** version *1.8* or higher is required. Used to import **Maven** projects
+- **Anypoint CLI V4:** should be present on your system. Used to import **RAML** projects. 
+- **Connected app**: The app requires a Connected App credentials. withe following scopes:
+    | Component             | Scope                                    |
+    |-----------------------|------------------------------------------------|
+    | Design center       | Design Center Developer|
+    | Exchange            | Exchange Contributor   |
+    | General             | View Environment       |
+    | General             | View Organization      |
+   
+
+
+
 
 ### Usage
+
+
+
 
 1. Ensure all the git submodules are updated and at the right version:
 
@@ -38,12 +66,21 @@ Before using the script, ensure that the following prerequisites are met:
     git pull --recurse-submodules
    ```
 
-2. (Optional) Configure the file (`deploy_config.json`) according to your project structure.
+2. (Optional) Configure the file (`deploy_config.csv`) according to your project structure. The file is used to instruct the tool about the projects to import.  
+The file follows the CSV format and has the the following fields:
 
-3. Execute the deployment script:
+     | Parameter             | Description                                    |
+    |-----------------------|------------------------------------------------|
+    | `project_name`       | the name of the git directory for the project to import, for example: "common-parent-pom" |
+    | `project_type`       | the type of project to import, it can be: **maven**, **raml**, **raml-fragment** |
+    | `is_template`     | **true** if the project to import is an application template. Valid only for project of type **maven**      |
+    | `should_import`    |  **true** if the project has to be imported, **false** if the script should skip it|
+
+
+1. Execute the deployment script:
 
    ```bash
-   ./deploy_script.sh <control_plane> <customer_name> <organization_id> <connected_app_id> <connected_app_secret>
+   ./deploy_script.sh [-w] [-g] [-d] <customer_name> <organization_id> <connected_app_id> <connected_app_secret>
    ```
 
    Replace the placeholder values with your actual input.
@@ -51,15 +88,17 @@ Before using the script, ensure that the following prerequisites are met:
 
     | Parameter             | Description                                    |
     |-----------------------|------------------------------------------------|
-    | `control_plane`       | A string specifying the control plane, which can be "eu" or "us". |
-    | `customer_name`       | A string representing the customer name.        |
-    | `organization_id`     | A string representing the organization ID.      |
-    | `connected_app_id`    | A string representing the connected app ID.     |
-    | `connected_app_secret`| A string representing the connected app secret. |
+    | `-w`       | (Optional) if present, specifies whether to use the **maven wrapper** included in this repository (./mvnw) or the global maven installation|
+    | `-g`       | (Optional) if present, the script will attempt to create **local git branches** on each project's directory to import. The branch will be created with the following format: **customer/<customer_name>**|
+    | `-d`       | (Optional) if present, specifies whether the **US control plane** should be used, the **EU control plane** is assumed otherwise |
+    | `<customer_name>`       | A string representing the customer name.        |
+    | `<organization_id>`     | A string representing the organization ID.      |
+    | `<connected_app_id>`    | A string representing the connected app ID.     |
+    | `<connected_app_secret>`| A string representing the connected app secret. |
 
 ### Script Features
 
-- **Java and Maven Version Checks:** The script checks whether the required versions of Java and Maven are installed.
+- **Java, Maven, Anypoint CLI V4 Version Checks:** The script checks whether the required versions of Java, Maven and Anypoint CLI V4 are installed.
 
 - **Project Type Support:** The script supports different project types, including Maven projects, RAML API projects, and RAML Fragment projects.
 
@@ -71,7 +110,7 @@ Before using the script, ensure that the following prerequisites are met:
 
 ### Customization
 
-- **Project Configuration:** Update the `deploy_config.json` file to include your specific project names and types.
+- **Project Configuration:** Update the `deploy_config.csv` file to include your specific project names and types.
 
 - **Command Customization:** Modify the script to include additional commands or customize existing commands based on your project requirements.
 
