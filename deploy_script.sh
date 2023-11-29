@@ -256,7 +256,7 @@ script_dir=$(pwd)
 #export variables
 export MULE_CONNECTED_APP_CLIENT_ID=$client_application_id
 export MULE_CONNECTED_APP_CLIENT_SECRET=$client_application_secret
-export MULE_ORG_ID=$organization_id
+export MULE_GROUP_ID=$organization_id
 
 # versions
 java_version="1.8"
