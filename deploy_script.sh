@@ -279,8 +279,6 @@ if [[ "$use_wrapper" == true ]]; then
    mvn_cmd="mvn"
 fi
 
-replace_group_id ".mvn" "$organization_id" settings.xml
-
 # Check Java and Maven versions
 check_anypoint_cli_version
 check_java_version
