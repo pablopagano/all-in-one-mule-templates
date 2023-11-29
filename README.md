@@ -21,10 +21,11 @@ These are the related projects used:
 * [common-parent-pom](https://github.com/mulesoft-consulting/common-parent-pom)
 * [mule-application-template](https://github.com/mulesoft-consulting/mule-application-template)
 * [common-traits-lib](https://github.com/mulesoft-consulting/common-traits-lib)
+* [design-api-template](https://github.com/mulesoft-consulting/design-api-template)
 * [dw-library-log-mapper](https://github.com/mulesoft-consulting/dw-library-log-mapper)
 * [health-check-app](https://github.com/mulesoft-consulting/health-check-app)
 * [dw-library-error-mapper](https://github.com/mulesoft-consulting/dw-library-error-mapper)
-*  [mule-application-template](https://github.com/mulesoft-consulting/dw-library-error-mapper)
+* [mule-application-template](https://github.com/mulesoft-consulting/dw-library-error-mapper)
 
 
 ## Deployment Script for Mule and RAML Projects
