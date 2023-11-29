@@ -44,7 +44,7 @@ Before using the script, ensure that the following prerequisites are met:
 - **Git:**  should be installed on the system.
 - **Java:** version *1.8* or higher is required. Used to import **Maven** projects
 - **Anypoint CLI V4:** should be present on your system. Used to import **RAML** projects. 
-- **Connected app**: The app requires a Connected App credentials. withe following scopes:
+- **Connected app**: The app requires a Connected App credentials, with the following scopes:
     | Component             | Scope                                    |
     |-----------------------|------------------------------------------------|
     | Design center       | Design Center Developer|
