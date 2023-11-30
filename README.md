@@ -64,7 +64,7 @@ Before using the script, ensure that the following prerequisites are met:
 1. Ensure all the git submodules are updated and at the right version:
 
    ```
-    git pull --recurse-submodules
+    git submodule update --remote
    ```
 
 2. (Optional) Configure the file (`deploy_config.csv`) according to your project structure. The file is used to instruct the tool about the projects to import.  
