@@ -14,7 +14,6 @@ body:
       description: Also tell us, what did you expect to happen?
       placeholder: Tell us what you see!
       value: "A bug happened!"
-      render: Markdown
     validations:
       required: true
   - type: textarea
@@ -24,7 +23,6 @@ body:
       description: Please tell us the steps required to reproduce the issue!
       placeholder: Tell us how we can reproduce!
       value: "Install X, do Y!"
-      render: Markdown
     validations:
       required: true
   - type: checkboxes
