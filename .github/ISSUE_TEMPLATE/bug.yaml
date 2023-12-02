@@ -1,0 +1,37 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
+      render: Markdown
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce-steps
+    attributes:
+      label: How can we reproduce?
+      description: Please tell us the steps required to reproduce the issue!
+      placeholder: Tell us how we can reproduce!
+      value: "Install X, do Y!"
+      render: Markdown
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://confluence.internal.salesforce.com/display/PSE/DRAFT+-+Internal+asset+initiative)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

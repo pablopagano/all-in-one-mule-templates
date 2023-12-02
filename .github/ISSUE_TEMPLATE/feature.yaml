@@ -1,0 +1,27 @@
+name: Feature idea
+description: Describe an idea or improvement on this project
+title: "[FEATURE]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this enhancement request!
+  - type: textarea
+    id: about
+    attributes:
+      label: What would you like to suggest?
+      description: describe in detail your idea and expected outcomes
+      placeholder: Tell us more about yor idea
+      value: "describe your idea!"
+      render: Markdown
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://confluence.internal.salesforce.com/display/PSE/DRAFT+-+Internal+asset+initiative)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
