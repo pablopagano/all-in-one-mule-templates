@@ -7,6 +7,47 @@ body:
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
+  - type: dropdown
+    id: control_plane
+    attributes:
+      label: Which control plane are you using?
+      multiple: true
+      options:
+        - Not applicabile
+        - EU
+        - US
+  - type: dropdown
+    id: java_version
+    attributes:
+      label: Which java version are you using?
+      multiple: true
+      options:
+        - Not applicabile
+        - "1.8"
+        - "11"
+        - "17"
+        - "21"
+  - type: dropdown
+    id: maven_version
+    attributes:
+      label: Which maven version are you using?
+      multiple: true
+      options:
+        - Not applicabile
+        - "3.8"
+        - "3.9"
+  - type: dropdown
+    id: anypoint_cli_version
+    attributes:
+      label: Which version of the Anypoint CLI V4 are you using?
+      multiple: true
+      options:
+        - Not applicabile
+        - "1.0"
+        - "1.1"
+        - "1.2"
+        - "1.3"
+        - "1.4"
   - type: textarea
     id: what-happened
     attributes:
@@ -29,7 +70,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://confluence.internal.salesforce.com/display/PSE/DRAFT+-+Internal+asset+initiative)
+      description: By submitting this issue, you have read our [Project Guidelines](https://confluence.internal.salesforce.com/display/PSE/DRAFT+-+Internal+asset+initiative)
       options:
-        - label: I agree to follow this project's Code of Conduct
+        - label: I confirm I have read the Project Guidelines
           required: true

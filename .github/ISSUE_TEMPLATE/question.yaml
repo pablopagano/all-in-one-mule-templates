@@ -1,19 +1,19 @@
-name: Feature idea
-description: Describe an idea or improvement on this project
-title: "[Feature]: "
-labels: ["enhancement"]
+name: Question
+description: Ask a generic question on the project
+title: "[Question]: "
+labels: ["question"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this enhancement request!
+        Thanks for taking the time to fill out this question!
   - type: textarea
     id: about
     attributes:
-      label: What would you like to suggest?
-      description: describe in detail your idea and expected outcomes
-      placeholder: Tell us more about yor idea
-      value: "describe your idea!"
+      label: What would you like to ask?
+      description: describe in detail your question
+      placeholder: Ask us anything
+      value: "Ask us anything!"
     validations:
       required: true
   - type: checkboxes
