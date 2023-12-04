@@ -1,4 +1,4 @@
-_Hi, thank you for your work. We understand that you want to merge your changes and move on to yout next project, but we also want to maintain the safety, readability, and testability of our code. Because of this, we kindly ask that you confirm that you have fulfilled the prerequisites for each category of activity before merging your changes._
+_Hi, thank you for your work. We understand that you want to merge your changes and move on to your next project, but we also want to maintain the safety, readability, and testability of our code. Because of this, we kindly ask that you confirm that you have fulfilled the prerequisites for each category of activity before merging your changes._
 
 ### Check list:
 
