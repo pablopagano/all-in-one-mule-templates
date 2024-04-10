@@ -40,17 +40,17 @@ The **deploy_script.sh**  is designed to streamline the deployment process for M
 Before using the script, ensure that the following prerequisites are met:
 
 - **Bash:** should be present on your system
-- **Maven:** version *3.9* or higher is required.
+- **Maven:** version *3.9* or higher is required
 - **Git:**  should be installed on the system.
 - **Java:** version *1.8* or higher is required. Used to import **Maven** projects
 - **Anypoint CLI V4:** should be present on your system. Used to import **RAML** projects. 
 - **Connected app**: The app requires a Connected App credentials, with the following scopes:
-    | Component             | Scope                                    |
-    |-----------------------|------------------------------------------------|
-    | Design center       | Design Center Developer|
-    | Exchange            | Exchange Contributor   |
-    | General             | View Environment       |
-    | General             | View Organization      |
+    | Component     | Scope                   |
+    | ------------- | ----------------------- |
+    | Design center | Design Center Developer |
+    | Exchange      | Exchange Contributor    |
+    | General       | View Environment        |
+    | General       | View Organization       |
    
 
 
@@ -59,26 +59,30 @@ Before using the script, ensure that the following prerequisites are met:
 ### Usage
 
 
+1. Ensure to clone this project using the  "--recurse" flag, so that the submodules projects are populated:
 
+   ```
+    git clone git@github.com:mulesoft-consulting/all-in-one-mule-templates.git --recursive
+   ```
 
-1. Ensure all the git submodules are updated and at the right version:
+2. Ensure all the git submodules are updated and at the right version:
 
    ```
     git submodule update --remote
    ```
 
-2. (Optional) Configure the file (`deploy_config.csv`) according to your project structure. The file is used to instruct the tool about the projects to import.  
+3. (Optional) Configure the file (`deploy_config.csv`) according to your project structure. The file is used to instruct the tool about the projects to import.  
 The file follows the CSV format and has the the following fields:
 
-     | Parameter             | Description                                    |
-    |-----------------------|------------------------------------------------|
-    | `project_name`       | the name of the git directory for the project to import, for example: "common-parent-pom" |
-    | `project_type`       | the type of project to import, it can be: **maven**, **raml**, **raml-fragment** |
-    | `is_template`     | **true** if the project to import is an application template. Valid only for project of type **maven**      |
-    | `should_import`    |  **true** if the project has to be imported, **false** if the script should skip it|
+     | Parameter       | Description                                                                                            |
+     | --------------- | ------------------------------------------------------------------------------------------------------ |
+     | `project_name`  | the name of the git directory for the project to import, for example: "common-parent-pom"              |
+     | `project_type`  | the type of project to import, it can be: **maven**, **raml**, **raml-fragment**                       |
+     | `is_template`   | **true** if the project to import is an application template. Valid only for project of type **maven** |
+     | `should_import` | **true** if the project has to be imported, **false** if the script should skip it                     |
 
 
-1. Execute the deployment script:
+4. Execute the deployment script:
 
    ```bash
    ./deploy_script.sh [-w] [-g] [-d] <customer_name> <organization_id> <connected_app_id> <connected_app_secret>
@@ -87,15 +91,15 @@ The file follows the CSV format and has the the following fields:
    Replace the placeholder values with your actual input.
    This is a description of the parameters:
 
-    | Parameter             | Description                                    |
-    |-----------------------|------------------------------------------------|
-    | `-w`       | (Optional) if present, specifies whether to use the **maven wrapper** included in this repository (./mvnw) or the global maven installation|
-    | `-g`       | (Optional) if present, the script will attempt to create **local git branches** on each project's directory to import. The branch will be created with the following format: **customer/<customer_name>**|
-    | `-d`       | (Optional) if present, specifies whether the **US control plane** should be used, the **EU control plane** is assumed otherwise |
-    | `<customer_name>`       | A string representing the customer name.        |
-    | `<organization_id>`     | A string representing the organization ID.      |
-    | `<connected_app_id>`    | A string representing the connected app ID.     |
-    | `<connected_app_secret>`| A string representing the connected app secret. |
+    | Parameter                | Description                                                                                                                                                                                               |
+    | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `-w`                     | (Optional) if present, specifies whether to use the **maven wrapper** included in this repository (./mvnw) or the global maven installation                                                               |
+    | `-g`                     | (Optional) if present, the script will attempt to create **local git branches** on each project's directory to import. The branch will be created with the following format: **customer/<customer_name>** |
+    | `-d`                     | (Optional) if present, specifies whether the **US control plane** should be used, the **EU control plane** is assumed otherwise                                                                           |
+    | `<customer_name>`        | A string representing the customer name.                                                                                                                                                                  |
+    | `<organization_id>`      | A string representing the organization ID.                                                                                                                                                                |
+    | `<connected_app_id>`     | A string representing the connected app ID.                                                                                                                                                               |
+    | `<connected_app_secret>` | A string representing the connected app secret.                                                                                                                                                           |
 
 ### Script Features
 
