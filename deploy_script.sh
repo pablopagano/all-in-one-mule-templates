@@ -32,6 +32,17 @@ check_maven_version() {
   log "Maven version is $version."
 }
 
+# Function to check jq
+check_jq() {
+  log "Checking jq..."
+  if jq --version > /dev/null; then
+    log "jq is present in the system"
+  else
+    log "Error: jq is not present in the system."
+    exit 1
+  fi
+}
+
 # Function to check anypoint cli version
 check_anypoint_cli_version() {
   log "Checking anypoint cli version..."
@@ -53,12 +64,12 @@ replace_group_id() {
   sed -i '' -e "s/GROUP_ID/$org_id/g" "$directory/$file" || exit 1
 }
 
-# Function to replace GROUP_ID placeholder in api.raml and exchange.json
+# Function to replace GROUP_ID placeholder in design-api-template.raml and exchange.json
 replace_group_id_raml() {
   local directory="$1"
   local org_id="$2"
   local main_file="$3"
-  log "Replacing GROUP_ID in $directory/api.raml and $directory/exchange.json..."
+  log "Replacing GROUP_ID in $directory/raml-design-template.raml and $directory/exchange.json..."
   sed -i  '' -e "s/GROUP_ID/$org_id/g" "$directory/$main_file" || exit 1
   sed -i  '' -e "s/GROUP_ID/$org_id/g" "$directory/exchange.json" || exit 1
 }
@@ -90,16 +101,25 @@ process_raml() {
   cd "$directory" || exit 1
   
   local ver="1.0.0"
+
+  local name=$(cat exchange.json | jq -r .name)
+  local exchange_group_id=$(cat exchange.json | jq -r .groupId)
+  local exchange_asset_id=$(cat exchange.json | jq -r .assetId)
+  local exchage_ver=$(cat exchange.json | jq -r .version)
+  local exchange_api_ver=$(cat exchange.json | jq -r .apiVersion)
+
+   
+
   git_managment "$customer_name"
   # Deploy using Maven
   log "Deploying using Anypoint cli..."
-  log "Creating RAML project $directory of type: $type..."
-  anypoint-cli-v4 designcenter:project:create --client_id $client_application_id --client_secret $client_application_secret --organization $organization_id  --type $type $directory || exit 1
+  log "Creating RAML project $name of type: $type..."
+  anypoint-cli-v4 designcenter:project:create --client_id $client_application_id --client_secret $client_application_secret --organization $organization_id  --type $type "$name" || exit 1
   log "Deploying using Anypoint cli..."
   log "Uploading RAML content from directory: $directory..."
-  anypoint-cli-v4 designcenter:project:upload --client_id $client_application_id --client_secret $client_application_secret --organization $organization_id  $directory . || exit 1
+  anypoint-cli-v4 designcenter:project:upload --client_id $client_application_id --client_secret $client_application_secret --organization $organization_id  "$name" . || exit 1
   log "Publishing RAML project with name: $directory..."
-  anypoint-cli-v4 designcenter:project:publish --client_id $client_application_id --client_secret $client_application_secret --organization $organization_id  $directory  --apiVersion 1.0 --version $ver || exit 1
+  anypoint-cli-v4 designcenter:project:publish --client_id $client_application_id --client_secret $client_application_secret --organization $organization_id  "$name" --name "$name" --assetId $exchange_asset_id --apiVersion $exchange_api_ver --version $exchage_ver || exit 1
   cd - || exit 1
   log "Finished processing $directory."
 }
@@ -181,7 +201,7 @@ process_directories_from_json() {
           process_directory "$name" "$customer_name" "$control_plane" "$template"
           ;;
         "raml")
-            replace_group_id_raml "$name" "$organization_id" "api.raml"
+            replace_group_id_raml "$name" "$organization_id" "raml-design-template.raml"
             rename_exchange_modules_raml "$name" "$organization_id"
             process_raml "$name" "$customer_name" "$control_plane" "raml"
           ;;
@@ -283,6 +303,7 @@ fi
 check_anypoint_cli_version
 check_java_version
 check_maven_version
+check_jq
 
 
 # Process directories from JSON file

@@ -41,6 +41,7 @@ Before using the script, ensure that the following prerequisites are met:
 
 - **Bash:** should be present on your system
 - **Maven:** version *3.9* or higher is required
+- **jq**: jq must be present on the system
 - **Git:**  should be installed on the system.
 - **Java:** version *1.8* or higher is required. Used to import **Maven** projects
 - **Anypoint CLI V4:** should be present on your system. Used to import **RAML** projects. 
