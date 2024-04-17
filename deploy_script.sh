@@ -167,7 +167,7 @@ deploy_with_maven() {
   
 
   local profile_template=""
-  if [[ "$control_plane" == "true" ]]; then
+  if [[ "$template" == "true" ]]; then
        log "project is a template..."
        profile_template="-Ptemplate" 
   fi
