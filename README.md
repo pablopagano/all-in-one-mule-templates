@@ -63,7 +63,7 @@ Before using the script, ensure that the following prerequisites are met:
 1. Ensure to clone this project using the  "--recurse" flag, so that the submodules projects are populated:
 
    ```
-    git clone git@github.com:mulesoft-consulting/all-in-one-mule-templates.git --recursive
+    git clone https://github.com/MuleSoft-Global-Proserv-Consulting-emu/all-in-one-mule-templates.git --recursive
    ```
 
 2. Ensure all the git submodules are updated and at the right version:
