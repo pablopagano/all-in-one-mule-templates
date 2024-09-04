@@ -1,24 +1,24 @@
 [submodule "common-parent-pom"]
 	path = common-parent-pom
-	url = git@github.com:mulesoft-consulting/common-parent-pom.git
+	url = https://github.com/MuleSoft-Global-Proserv-Consulting-emu/common-parent-pom.git
 [submodule "health-check-app"]
 	path = health-check-app
-	url = git@github.com:mulesoft-consulting/health-check-app.git
+	url = https://github.com/MuleSoft-Global-Proserv-Consulting-emu/health-check-app.git
 [submodule "common-error-handling"]
 	path = common-error-handling
-	url = git@github.com:mulesoft-consulting/common-error-handling.git
+	url = https://github.com/MuleSoft-Global-Proserv-Consulting-emu/common-error-handling.git
 [submodule "common-traits-lib"]
 	path = common-traits-lib
-	url = git@github.com:mulesoft-consulting/common-traits-lib.git
+	url = https://github.com/MuleSoft-Global-Proserv-Consulting-emu/common-traits-lib.git
 [submodule "design-api-template"]
 	path = design-api-template
-	url = git@github.com:mulesoft-consulting/design-api-template.git
+	url = https://github.com/MuleSoft-Global-Proserv-Consulting-emu/design-api-template.git
 [submodule "dw-library-error-mapper"]
 	path = dw-library-error-mapper
-	url = git@github.com:mulesoft-consulting/dw-library-error-mapper.git
+	url = https://github.com/MuleSoft-Global-Proserv-Consulting-emu/dw-library-error-mapper.git
 [submodule "dw-library-log-mapper"]
 	path = dw-library-log-mapper
-	url = git@github.com:mulesoft-consulting/dw-library-log-mapper.git
+	url = https://github.com/MuleSoft-Global-Proserv-Consulting-emu/dw-library-log-mapper.git
 [submodule "mule-application-template"]
 	path = mule-application-template
-	url = git@github.com:mulesoft-consulting/mule-application-template.git
+	url = https://github.com/MuleSoft-Global-Proserv-Consulting-emu/mule-application-template.git
